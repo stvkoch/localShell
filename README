@@ -1,0 +1,27 @@
+  Emulate persistent shell environment
+
+  @example
+    $shell1 = new Shell('/Home/child');
+      $shell1->exec('cd www');
+      $shell1->exec('ls'); //list /Home/child/www
+
+    $shell2 = new Shell('/Home/parent/docs');
+      $shell2->exec('ls'); //list /Home/parent/docs 
+      $shell2->exec('cd extra');
+
+    $shell1->exec('cat index.html');//show content from /Home/child/www/index.html
+    $shell2->exec('cat manual.doc');//show content from /Home/parent/docs/extra/manual.doc
+
+  @Limitation this is not use proc_open and you cannot access a stream STDIN for shell interact
+    You cannot 
+      $shell1->exec('sudo -s');
+      $shell1->exec('mySudoPassword');//wrong!
+      but you can:
+      $shell1->exec('sudo -s');
+      $shell1->exec('cat /etc/apache/extra/superconfig.ini'); //run how sudoer
+
+  This project is inspired and based on PHP Shell 2.0! Please visit:
+  http://www.gimpster.com/wiki/PhpShell
+  
+  Adapted by
+  Steven Koch <stvkoch@gmail.com>
