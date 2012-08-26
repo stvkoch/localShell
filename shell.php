@@ -19,7 +19,7 @@
       $shell1->exec('sudo -s');
       $shell1->exec('mySudoPassword');//wrong!
       but you can:
-      $shell1->exec('sudo -s');
+      $shell1->exec('sudo -s'); //if user process has sudoer 
       $shell1->exec('cat /etc/apache/extra/superconfig.ini'); //run how sudoer
 
   This project is inspired and based on PHP Shell 2.0! Please visit:
